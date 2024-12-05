@@ -1,0 +1,36 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject LoginService loginService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<PageTitle>Волонтёрство Якт</PageTitle>
+<h1 class="vTitle">Волонтёрство Якутск</h1>
+<div class="vBack">
+    <a href="/login"><button class="green-button">@btnText</button></a>
+</div>
+<br /><br />
+
+<div>
+    Миссия нашего сайта заключается в обьединении людей, желающих помочь друг другу.<br />
+    Наш сайт будет специализирован на осведомлении жителей о волонтерском движении. Так как многие не знают, как начать добровольческую деятельность.
+
+</div>
+
+
+@code {
+    private string btnText = "Вступить";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender){
+        var cookies1 = await localStorage.GetItemAsync<string>("login");
+        var cookies2 = await localStorage.GetItemAsync<string>("name");
+        var cookies3 = await localStorage.GetItemAsync<string>("password");
+        if (cookies1 == "user pass")
+        {
+            btnText = "Перейти в профиль";
+            loginService.IsLogin = true;
+            loginService.Name = cookies2;
+            loginService.Password = cookies3;
+            //NavigationManager.NavigateTo("/");
+        }
+    }
+}

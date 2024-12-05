@@ -1,0 +1,27 @@
+﻿@page "/profile"
+@inject LoginService loginService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject NavigationManager Navigation
+
+@rendermode InteractiveServer
+
+<PageTitle>Профиль</PageTitle>
+
+<h3>Профиль</h3>
+<h5>Здравствуйте, @nameText</h5>
+
+<button @onclick="logout">Выход</button>
+
+@code {
+	private string nameText;
+
+	private async Task logout(){
+		await localStorage.SetItemAsync("login", "none");
+		loginService.IsLogin = false;
+		Navigation.NavigateTo("/login");
+	}
+	protected override void OnInitialized()
+	{
+		nameText = loginService.Name;
+	}
+}

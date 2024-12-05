@@ -1,0 +1,22 @@
+﻿body {
+}
+
+.vTitle{
+    text-align: center;
+}
+
+.vBack {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.green-button {
+    background-color: #5CA93B;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
