@@ -168,6 +168,7 @@ code {
         max-width: 800px; /* Maximum size for the image */
         height: auto;
         border: 1px solid black;
+        border-radius: 10px;
     }
 
 @media (max-width: 768px) {
